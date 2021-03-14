@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+
+{% block title %}Home{% endblock %}
+
+
+<!-- Content block from base.html -->
+{% block content %}
+<br>
+<h1 align="center">Notes</h1>
+<br>
+
+
+<!-- for list group -->
+<ul class="list-group list-group-flush" id="notes">
+    {% for note in user.notes %}
+    <li class="list-group-item">
+        
+        
+        <h4>{{ note.date }}</h4>
+        <!-- for preserving whitespace -->
+        <p style="white-space:pre-wrap">{{ note.data }}</p>
+
+        <!-- for deleting note button -->
+        <button type="button" class="btn btn-danger" onClick="deleteNote({{ note.id }})">
+            Delete
+        </button>
+    </li>
+    {% endfor %}
+</ul>
+<br>
+
+<form method="POST">
+    <textarea name = "note" id = "note" class="form-control"></textarea>
+    <br>
+    <div align="center">
+        <button type="submit" class="btn btn-primary">Add Note</button>
+    </div>
+
+</form>
+
+{% endblock %}
