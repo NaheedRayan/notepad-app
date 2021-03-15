@@ -48,6 +48,10 @@ def create_app():
 
     # for admin page
     admin = Admin(app)
+    class ChildView(ModelView):
+        column_display_pk = True # optional, but I like to see the IDs in the list
+        column_hide_backrefs = False
+    
     admin.add_view(ModelView(User, db.session))
     admin.add_view(ModelView(Note, db.session))
 
