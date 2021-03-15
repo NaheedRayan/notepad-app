@@ -11,7 +11,8 @@ class User(db.Model , UserMixin):
     password = db.Column(db.String(150))
     firstname = db.Column(db.String(150))
     lastname = db.Column(db.String(150))
-    notes = db.relationship('Note')
+    # a sudo coloumn in Note
+    notes = db.relationship('Note',backref=db.backref('user-id'))
 
     # def __repr__(self):
     #     print(f"<Post {self.firstname}>")
