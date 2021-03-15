@@ -52,8 +52,8 @@ def create_app():
         column_display_pk = True # optional, but I like to see the IDs in the list
         column_hide_backrefs = False
     
-    admin.add_view(ModelView(User, db.session))
-    admin.add_view(ModelView(Note, db.session))
+    admin.add_view(ChildView(User, db.session))
+    admin.add_view(ChildView(Note, db.session))
 
     return app
 
